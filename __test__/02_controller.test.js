@@ -3,7 +3,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const sinon = require('sinon');
 const { expect } = require('chai');
-const { url: URLModel } = require('../models');
+const { urls: URLModel } = require('../models');
 chai.use(chaiHttp);
 
 describe('🚀 (2-1) controller 작성', () => {
@@ -41,6 +41,7 @@ describe('🚀 (2-2) router 연결', () => {
         url: 'https://www.github.com'
       })
       .end((err, resp) => {
+        console.log(spyPost.callCount)
         expect(spyPost.callCount).to.be.eql(1)
         done();
       })
@@ -140,7 +141,6 @@ describe('🚀 (2-3) controller 구현', () => {
       .get(`/links/${recordId}`)
       .redirects(0)
       .send()
-
     expect(resp.header.location).to.be.eql('https://www.github.com')
   })
 
