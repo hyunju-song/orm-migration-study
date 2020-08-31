@@ -1,4 +1,5 @@
 "use strict";
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("urls", {
@@ -6,28 +7,28 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
       },
       url: {
-        type: Sequelize.STRING,
+        type: Sequelize.DataTypes.STRING,
       },
       title: {
-        type: Sequelize.STRING,
+        type: Sequelize.DataTypes.STRING,
       },
       visits: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
+        type: Sequelize.DataTypes.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DataTypes.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DataTypes.DATE,
       },
     });
   },
+
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable("urls");
   },
